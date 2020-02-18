@@ -5,6 +5,7 @@
  */
 package boletin20_1;
 
+import java.util.ArrayList;
 import meusmetodos.PedirDato;
 
 /**
@@ -13,13 +14,44 @@ import meusmetodos.PedirDato;
  */
 public class Metodos {
     
-    public Libro crearXogador(){
-       
-        Libro xog = new Libro(PedirDato.PedirString("Titulo:"),PedirDato.PedirString("autor :"),PedirDato.PedirString("ISBN :"),PedirDato.PedirInt(),PedirDato.PedirInt());
+    public ArrayList<Libro> crearLibro(ArrayList<Libro>listaLibros){       
         
-        return xog;            
+        Libro obx = new Libro(PedirDato.PedirString("Titulo:"),PedirDato.PedirString("autor :"),PedirDato.PedirString("ISBN :"),PedirDato.PedirInt(),PedirDato.PedirInt());        
+        if(listaLibros.isEmpty()){        
+                listaLibros.add(obx);        
+        }else{
+            for (Libro i : listaLibros){
+               if(i.ISBN == obx.ISBN){
+                  i.unidades++;
+                }else{
+                  listaLibros.add(obx);
+                }           
+            }
     }
+                return listaLibros;   
 
+    }
+    //vender ( borrar ) libros
+    public void venderLibro(ArrayList<Libro>listaLibros,String libroVende){
     
+        for (Libro i : listaLibros){
+        if (i.ISBN == libroVende){
+            
+            if (i.unidades>1){
+                i.unidades--;
+            }else{
+               listaLibros.remove(i);
+            }
+        
+        }
+            
+        
+        }
+    
+    
+    }
+       public void salir() {
+        System.exit(0);
+    }    
     
 }

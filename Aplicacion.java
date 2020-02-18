@@ -6,6 +6,7 @@
 package boletin20_1;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,10 +20,22 @@ public class Aplicacion {
     public static void main(String[] args) {
         
         
-            ArrayList<Libro>listaXogadores = new ArrayList();
+            ArrayList<Libro>listaLibros = new ArrayList();
 
-        
-    
+        Metodos obx = new Metodos();
+        int option = Integer.parseInt(JOptionPane.showInputDialog("Que quieres hacer \n "
+                + "1) Añadir Libro \n"
+                + "6) Salir"));
+            
+        do{
+            switch(option){
+                case 1:
+                    listaLibros = obx.crearLibro(listaLibros);
+                    break;
+                case 6:
+                    obx.salir();
+                }
+        }while(6 !=option);
     }
     
 }
