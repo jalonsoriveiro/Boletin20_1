@@ -5,11 +5,13 @@
  */
 package boletin20_1;
 
+import java.util.Comparator;
+
 /**
  *
  * @author jalonsoriveiro
  */
-public class Libro {
+public class Libro implements Comparable<Libro>{
     
     String titulo = null;
     String autor  = null;
@@ -72,6 +74,10 @@ public class Libro {
     @Override
     public String toString() {
         return "Libro{" + "titulo=" + titulo + ", autor=" + autor + ", ISBN=" + ISBN + ", prezo=" + prezo + ", unidades=" + unidades + '}';
+    }
+    @Override
+    public int compareTo(Libro o) {     
+        return autor.compareToIgnoreCase(o.autor);
     }
     
     
